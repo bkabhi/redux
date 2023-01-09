@@ -15,3 +15,13 @@ code {
 .App {
   text-align: center;
 }
+button{
+  cursor: pointer;
+}
+.todosList{
+  display: flex;
+  gap: 2rem;
+  margin: 1rem;
+  justify-content: center;
+  align-items: center;
+}

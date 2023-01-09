@@ -1,29 +1,20 @@
 import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import { countReducer } from './reducer';
+import { countReducer } from './counter/reducer.js';
 import thunk from 'redux-thunk';
+import { todoReducer } from './todo/reducer.js';
 
 
-const loggerMiddleware = (store) => (next) => (action) => {
-    // you will have access to store, action object in your middleware function
-    if(typeof action === 'function'){
-        return action(store.dispatch);
-    }
-    // console.log("1 enter loggerMiddleware", action);
-    // invoking next invokes next middleware if any in the pipeline or invokes reducer;
-    return next(action);
-    // console.log("1 e exit loggerMiddleware", action);
-}
-// const updateMiddleware = (store) => (next) => (action) => {
-//     // console.log("2 enter loggerMiddleware", action);
-//     // action.payload = 3
-//     next(action);
-//     // console.log("2 e enter loggerMiddleware", action);
+// const loggerMiddleware = (store) => (next) => (action) => {
+//     if(typeof action === 'function'){
+//         return action(store.dispatch);
+//     }
+//     return next(action);
 // }
 
-
 const rootReducers = combineReducers({
-    // this contains All 
-    Count: countReducer
+    // this contains All reducers
+    Count: countReducer,
+    Todo: todoReducer
 })
 
 
